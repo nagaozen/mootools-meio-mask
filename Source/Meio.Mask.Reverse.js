@@ -154,7 +154,9 @@ Meio.Mask.Reverse = new Class({
 
 	maskThousands: function(str){
 		if (this.options.thousands){
-			while (this.reThousands.test(str)) str = str.replace(this.reThousands, this.thousandsReplaceStr);
+			while (str.toFloat() >= 1000 && this.reThousands.test(str)) {
+				str = str.replace(this.reThousands, this.thousandsReplaceStr);
+			}
 		}
 		return str;
 	},
